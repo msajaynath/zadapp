@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{"Categories" | translate}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="background-color: #f4f6f7">
+  <img style="width:50%; display: inline-block" *ngFor="let item of Categories" 
+    (click)="CategoryClicked($event, item)" src={{item.ImageURL}} />
+</ion-content>

@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{"Create Profile" | translate}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="background-color: lightgrey">
+	<p style="margin: 4%">{{"Create Profile Tag" | translate}}</p>
+	<ion-card>
+		<ion-card-content>
+			<ion-list>		
+				<ion-item>
+					<ion-label floating>{{"Name" | translate}}</ion-label>
+					<ion-input type="text"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label floating>{{"Occupation" | translate}}</ion-label>
+					<ion-input type="text"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label floating>{{"Status" | translate}}</ion-label>
+					<ion-input type="text"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label floating>{{"Email" | translate}}</ion-label>
+					<ion-input type="text"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label floating>{{"Mobile" | translate}}</ion-label>
+					<ion-input type="text"></ion-input>
+				</ion-item>
+			</ion-list>
+		</ion-card-content>
+	</ion-card>	
+	<p style="margin: 4%">{{"CliCk Social" | translate}}</p>
+	<ion-icon style="width: 30%;text-align: center;color: blue" name="logo-facebook"></ion-icon>
+	<ion-icon style="width: 30%;text-align: center;color: darkorange" name="logo-google"></ion-icon>
+	<ion-icon style="width: 30%;text-align: center;color: skyblue" name="logo-twitter"></ion-icon>
+</ion-content>

@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar >
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title *ngIf="!IsSearchClicked" style="float:left;width:30%">ZaD</ion-title>
+		<ion-icon style ="display: block;text-align: right;margin-right: 10%" (click)="SearchClick()" *ngIf="!IsSearchClicked" ios="ios-search" md="md-search"></ion-icon>
+		<ion-searchbar *ngIf="IsSearchClicked" style="width:85%;float:left;"></ion-searchbar>
+		<ion-icon name="keypad" *ngIf="IsSearchClicked" (click)="RefineSearchPopover()" style="display: block; padding-left: 90%;
+    padding-top: 4%;"></ion-icon>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>	
+	<ion-card *ngFor="let item of Recipies">		
+		<div (click)="itemTapped($event, item)" class="card-background-page">
+			<img style="width: 100%" src={{item.ImageURL}}>
+			<div class="card-Ingerigent-Icon"> 
+				<ion-icon style="color: powderblue;margin-top: 7%" ios="ios-thumbs-up" md="md-thumbs-up"></ion-icon>
+			</div>
+			<div class="card-Ingerigent-TextHome">      
+				<div class="RecipieName">{{item.RecipieName}}</div>
+				<div class="RecipieDetail">{{item.RecipieDetailedName}}</div>
+			</div>
+		</div>
+		<ion-row no-padding>
+			<ion-col>
+				<button (click)="presentPopover()" ion-button clear small color="danger" icon-left>
+					<ion-icon name='star'></ion-icon>
+				</button>
+			</ion-col>
+			<ion-col text-center>
+				<button ion-button clear small color="danger" icon-left>
+					<ion-icon ios="ios-time" md="md-time"></ion-icon>
+					{{item.TimeRequired}}
+				</button>
+			</ion-col>
+			<ion-col text-right>
+				<button ion-button clear small color="danger" icon-left>
+					<ion-icon name='share-alt'></ion-icon>
+				</button>
+			</ion-col>
+		</ion-row>
+  </ion-card>  
+</ion-content>

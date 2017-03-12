@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title style="display: block;width: 65%;float: left;">{{"Profile" | translate}}</ion-title>
+    <span style="display: block;width: 20%;float: left">Private</span>
+    <ion-toggle style="float: right"></ion-toggle>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <div style="background-color: #47455b;color: gold;font-family:Times New Roman"><br />
+      <img class="item-profile"  src="assets/Profile/profile.jpg">
+      <div style="text-align: center">Joe Doe</div>
+      <div style="text-align: center">Chief chef @ Vivantha Taj</div>
+      <br/>
+      <ion-grid>
+        <ion-row>
+          <ion-col width-33 class="borderTop borderRight">
+            <div>Recipie</div>
+            <div>12</div>
+           </ion-col>
+          <ion-col width-33 class="borderTop borderRight">
+            <div>Followers</div>
+            <div>152</div>  
+           </ion-col>          
+          <ion-col width-33 class="borderTop">
+            <div>Following</div>
+            <div>158</div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <ion-card-header style="background-color: #e3e6ea">
+      Contact-ME
+    </ion-card-header>
+    <ion-list>
+      <ion-item>
+        <ion-icon name="mail" item-left></ion-icon>
+          abinelias@yahoo.com
+      </ion-item>
+      <ion-item>      
+        <ion-icon name="contact" item-left></ion-icon>
+        9562455254
+      </ion-item>
+    </ion-list>   
+    <ion-card-header style="background-color: #e3e6ea">
+      Social Contacts
+    </ion-card-header>    
+    <ion-icon style="width: 30%;text-align: center;color: blue;font-size: 55px" name="logo-facebook"></ion-icon>
+    <ion-icon style="width: 30%;text-align: center;color: darkorange;font-size: 55px" name="logo-google"></ion-icon>
+    <ion-icon style="width: 30%;text-align: center;color: skyblue;font-size: 55px" name="logo-twitter"></ion-icon> 
+
+    <ion-card-header style="background-color: #e3e6ea">
+      <span>My Recipies</span>
+      <span style="float: right"><button (click)="MyRecipiesList($event, 'item')" ion-button>My Recipies</button></span>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row wrap>
+          <ion-col width-33 *ngFor="let file_uri of images">
+          <img [src]="file_uri" />
+          </ion-col>
+        </ion-row>
+      </ion-grid> 
+    </ion-card-content>
+  </ion-card>
+</ion-content>

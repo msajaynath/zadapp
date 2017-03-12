@@ -1,0 +1,121 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{"Recipe Details" | translate}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>  
+
+
+  <div  class="card-background-page">
+    <img  src={{recipieDetails.RecipieImageUrl}}/>
+    <div class="card-Ingerigent-Text">
+      <div style="float:right;display: block;height: 5%">
+        <rating style="color: #ffb400;height: 5%" [(ngModel)]=recipieDetails.RecipieCurrentRating
+        readOnly="true" max="5"
+        (ngModelChange)="onModelChange($event)"></rating>
+      </div>
+      <div>
+        <span>{{recipieDetails.RecipieName}}</span>
+      </div>
+      <div>{{recipieDetails.RecipieDetailedName}}</div>
+      <div>
+        <span>7 Ingredents</span>
+        <span style="float:right">30 MIN</span>
+      </div>
+    </div>
+  </div>
+  
+
+
+  
+ 
+    <ion-list no-lines>
+   <ion-item class="AddAllIngredent">
+      <ion-label >Maker</ion-label>
+      <ion-label (click)="RecipieOwnerClick($event, 'Joe')" class="ListHeading" style = "text-align:right">{{recipieDetails.RecipieMaker}}</ion-label>
+      <ion-avatar item-right>
+        <img class="item-profileRecipie"  src="assets/Profile/profile.jpg">
+      </ion-avatar>
+   </ion-item>
+ 
+   <ion-item>
+      <ion-label class="ListHeading">Ingredents</ion-label>      
+    </ion-item>
+    <ion-item class="AddAllIngredent">
+      <ion-icon name="add-circle" style="color: lawngreen"></ion-icon>
+      Add all ingredients
+    </ion-item>
+    <button ion-item *ngFor="let item of recipieDetails.RecipieIngredients let index =index; let odd=odd; let even=even" 
+      [class.odd]="odd" 
+      [class.even]="even"  (click)="itemSelected(item)">
+      <ion-icon name="add-circle" style="color: lawngreen"></ion-icon> 
+      <span> {{ item }}</span>
+    </button>  
+  </ion-list>
+  <ion-list no-lines>
+   <ion-item>
+      <ion-label class="ListHeading">Directions</ion-label>
+   </ion-item>
+   <div class={{directionStyle}}>
+      <div *ngFor="let item of directions let index =index;">
+        <ion-item style="background-color: beige">Step {{index + 1}}</ion-item>
+        <ion-item text-wrap *ngFor="let dir of item.subDirection let i =index; 
+          let odd=odd; 
+          let even=even" 
+          [class.odd]="odd" 
+          [class.even]="even">
+          <ion-icon name="checkmark"></ion-icon> {{dir.Text}}
+        </ion-item>
+      </div>
+   </div>  
+   
+    <ion-item>
+      <button (click)='StylingClick()' ion-button full>{{ButtonContent}}</button>
+    </ion-item>
+  </ion-list> 
+  
+ <ion-list no-lines>
+   <ion-item>
+      <ion-label class="ListHeading">Photos({{recipieDetails.RecipieImages.length}})</ion-label>
+   </ion-item>
+  </ion-list> 
+    <ion-item>
+    
+    <ion-scroll scrollX="true"  class="item" >
+        <ion-row>
+          <ion-col *ngFor="let item of recipieDetails.RecipieImages" width-25  >
+        <img src={{item}} imageViewer />
+          </ion-col>
+           
+        </ion-row>
+    </ion-scroll>
+
+  </ion-item>
+  
+  <ion-list no-lines>
+   <ion-item>
+      <ion-label class="ListHeading">Reviews</ion-label>
+   </ion-item>
+  </ion-list>  
+  <ion-list *ngFor="let item of recipieDetails.RecipieReview" class="even">
+    <ion-list-header class="even">
+      <ion-avatar item-left>
+        <img src={{item.ReviewerImage}}>
+      </ion-avatar>
+      <div style="float: left; width:40%">
+        <span>{{item.ReviewerName}}</span>
+        <p>{{item.ReviewerDate}}</p>
+      </div>
+      <div style="float: right">
+        <rating style="color: #ffb400;height: 5%" [(ngModel)] = item.ReviewerRating
+        readOnly="true" max="5"></rating>
+      </div>
+    </ion-list-header>
+    <ion-item text-wrap class="odd">
+      {{item.ReviewerComments}}
+    </ion-item>
+
+  
+  </ion-list>
+</ion-content>
